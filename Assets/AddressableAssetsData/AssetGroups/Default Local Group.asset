@@ -21,6 +21,10 @@ MonoBehaviour:
     m_Address: Assets/Prefabs/Bubble.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 6643177d5d71c7049943fb44f406bb74
+    m_Address: Assets/ConfigData.json
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   - m_GUID: f4fc7cb5a5935324e96450d2fc0f7eb5
     m_Address: Assets/StreamingAssets/TestJson/test.json
     m_ReadOnly: 0

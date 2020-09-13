@@ -1,0 +1,23 @@
+{
+	"color": 
+	[
+		{
+			"name": "red",
+			"audio": "I_want_to_eat_something_red",
+			"pic": "/Art/LetterR_RedSplat.png"
+		},
+		{
+			"name": "yellow",
+			"audio": "I_want_to_eat_something_yellow",
+			"pic": "/Art/LetterY_YellowSplat.png"
+		},
+	],
+	"nums": 
+	[
+		"one",
+		"two",
+		"three",
+		"four",
+		"five"
+	]
+}

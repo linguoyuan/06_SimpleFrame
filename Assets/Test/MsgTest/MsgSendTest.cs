@@ -9,6 +9,7 @@ public class MsgSendTest : MonoBehaviour
     void Start()
     {
         GameObject.Find("Button").GetComponent<Button>().onClick.AddListener(TestBtn);
+        ConfigMgr.Single.InitConfigData();
     }
 
     void TestBtn()
