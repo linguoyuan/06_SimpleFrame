@@ -48,4 +48,31 @@ public class JsonSaver : MonoBehaviour, ISaver
         //关闭StreamWriter
         sw.Close();
     }
+
+
+    /// <summary>
+    /// 这里采用JSONObject这个Json解析类更为方便
+    /// </summary>
+    /// <param name="path"></param>
+    /// <param name="jSONObject"></param>
+    public void SaveConfigToJson(string path, string saveJsonStr)
+    {
+        if (!File.Exists(path))
+        {
+            Debug.Log("文件不存在，创建文件");
+            File.Create(path).Dispose();
+            //File.Create(path);这里如果直接写，同时连续保存两个文件时会报错system.IO sharing violation on path。文件句柄需要先关闭才能下一个。
+        }
+        else
+        {
+            Debug.Log("文件存在");
+        }
+        //将这个字符串写入到文件中
+        //创建一个StreamWriter，并将字符串写入文件中
+        StreamWriter sw = new StreamWriter(path);
+        sw.Write(saveJsonStr);
+        //关闭StreamWriter
+        sw.Close();
+        Debug.Log("保存成功");
+    }
 }

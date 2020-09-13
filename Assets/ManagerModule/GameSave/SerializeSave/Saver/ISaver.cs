@@ -7,4 +7,5 @@ public interface ISaver
 {
     void LoadData(string path, Action<GameModel> complete);
     void SaveData(string path, GameModel model);
+    void SaveConfigToJson(string path, string jsonStr);
 }

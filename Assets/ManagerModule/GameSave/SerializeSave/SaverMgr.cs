@@ -17,6 +17,11 @@ public class SaverMgr : NormalSingleton<SaverMgr>, ISaver
         _saver.LoadData(path, complete);
     }
 
+    public void SaveConfigToJson(string path, string jsonStr)
+    {
+        _saver.SaveConfigToJson(path, jsonStr);
+    }
+
     public void SaveData(string path, GameModel model)
     {
        _saver.SaveData(path, model);
