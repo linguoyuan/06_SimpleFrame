@@ -5,7 +5,7 @@ using LitJson;
 using System.IO;
 using System;
 
-public class JsonSaver : MonoBehaviour, ISaver
+public class JsonSaver : ISaver
 {
     public void LoadData(string path, Action<GameModel> complete)
     {
