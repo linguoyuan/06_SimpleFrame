@@ -7,14 +7,15 @@ public class MsgReceiveTest : MonoBehaviour
 {
     private void Awake()
     {
-        SubMsgMgr.Single.AddListener(MsgEvent.EVENT_Test, TestBtnReceive);
-        SubMsgMgr.Single.AddListener(MsgEvent.EVENT_Test, TestBtnReceive2);
-        SubMsgMgr.Single.AddListener(MsgEvent.EVENT_ConfigInitDone, ConfigDone);
+        Debug.Log("Awake");
     }
 
     void Start()
     {
-
+        Debug.Log("Start");
+        SubMsgMgr.Single.AddListener(MsgEvent.EVENT_Test, TestBtnReceive);
+        SubMsgMgr.Single.AddListener(MsgEvent.EVENT_Test, TestBtnReceive2);
+        SubMsgMgr.Single.AddListener(MsgEvent.EVENT_ConfigInitDone, ConfigDone);
     }
 
     private void TestBtnReceive(object[] obj)
@@ -35,11 +36,19 @@ public class MsgReceiveTest : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        Debug.Log("OnDisable");
+    }
+
     private void OnDestroy()
     {
-        SubMsgMgr.Single.RemoveListener(MsgEvent.EVENT_Test, TestBtnReceive);
-        SubMsgMgr.Single.RemoveListener(MsgEvent.EVENT_Test, TestBtnReceive2);
-        SubMsgMgr.Single.RemoveListener(MsgEvent.EVENT_ConfigInitDone, ConfigDone);
+        Debug.Log("OnDestroy");
+
+        //由于程序退出时脚本对象时随机销毁的，这里的事件注销要注意在程序退出提前注销，在OnDestroy时退出是有可能报错的
+        //SubMsgMgr.Single.RemoveListener(MsgEvent.EVENT_Test, TestBtnReceive);
+        //SubMsgMgr.Single.RemoveListener(MsgEvent.EVENT_Test, TestBtnReceive2);
+        //SubMsgMgr.Single.RemoveListener(MsgEvent.EVENT_ConfigInitDone, ConfigDone);
     }
 
     private void ConfigDone(object[] obj)
