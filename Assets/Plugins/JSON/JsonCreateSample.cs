@@ -1,62 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
-using System;
 using LitJson;
 
-
-public class SaveTest : MonoBehaviour
+public class JsonCreateSample : MonoBehaviour
 {
-    void Start()
-    {
-        //测试1
-        //JsonModelSave();
-        StartCoroutine(Test2());
-    }
-
-    private IEnumerator Test2()
-    {
-        //测试2,注意如果是在用安卓平台下要用Application.persistentDataPath，因为后面存文件欧阳那个到了File类
-        string path = Path.Combine(Application.persistentDataPath, "UserConfig.json");
-        SaverMgr.Single.SaveConfigToJson(path, CreateJson());
-        yield return new WaitForSeconds(2);
-
-        string path2 = Path.Combine(Application.persistentDataPath, "UserConfig2.json");
-        SaverMgr.Single.SaveConfigToJson(path2, CreateJson2());
-
-        string path3 = Path.Combine(Application.persistentDataPath, "UserConfig3.json");
-        SaverMgr.Single.SaveConfigToJson(path3, CreateJson3());
-
-        string path4 = Path.Combine(Application.persistentDataPath, "UserConfig4.json");
-        SaverMgr.Single.SaveConfigToJson(path4, CreateJson4());
-
-        string path5 = Path.Combine(Application.persistentDataPath, "UserConfig5.json");
-        SaverMgr.Single.SaveConfigToJson(path5, LitJsonCreateJson());
-
-        string path6 = Path.Combine(Application.persistentDataPath, "UserConfig6.json");
-        SaverMgr.Single.SaveConfigToJson(path6, LitJsonCreateJsonJson());
-    }
-
-    private void JsonModelSave()
-    {
-        GameModel model = new GameModel
-        {
-            Life = 5,
-            Score = 0
-        };
-        string path = Path.Combine(Application.persistentDataPath, "GameModel.json");
-        SaverMgr.Single.SaveData(path, model);
-
-        SaverMgr.Single.LoadData(path, GetModelData);
-    }
-
-    private void GetModelData(GameModel obj)
-    {
-        Debug.Log("Life:" + obj.Life);
-        Debug.Log("Score:" + obj.Score);
-    }
-
     private string CreateJson()
     {
         JSONObject jObject = new JSONObject();
