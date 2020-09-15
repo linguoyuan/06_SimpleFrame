@@ -6,7 +6,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using Object = UnityEngine.Object;
 
-public class AddrLoader : ILoader
+public class AddrLoader : MonoBehaviour, ILoader
 {
     public async void Load<T>(string path, Action<Object> complete) where T : UnityEngine.Object
     {
@@ -37,9 +37,15 @@ public class AddrLoader : ILoader
     /// <param name="path"></param>
     /// <param name="parent"></param>
     /// <returns></returns>
+    public async void LoadAsyncPrefab(string path, Action<GameObject> complee, Transform parent = null)
+    {
+        GameObject temp = await Addressables.LoadAssetAsync<GameObject>(path).Task;
+        complee(temp);
+    }
+
     public GameObject LoadPrefab(string path, Transform parent = null)
     {
-        GameObject temp = Addressables.InstantiateAsync(path, parent).Result;
-        return temp;
+        //Addressables没有直接返回的方式
+        throw new NotImplementedException();
     }
 }

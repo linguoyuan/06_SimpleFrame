@@ -69,4 +69,9 @@ public class ResourceLoader : ILoader
             complete(request.downloadHandler.text);
         }               
     }
+
+    public void LoadAsyncPrefab(string path, Action<GameObject> complete, Transform parent = null)
+    {
+        throw new NotImplementedException();
+    }
 }
